@@ -14,9 +14,12 @@
         <v-text-field
           label="Contraseña"
           filled
-          type="password"
-          append-icon="mdi-eye-outline"
+          :type="showPassword ? 'text' : 'password'"
+          :append-icon="
+            showPassword ? 'mdi-eye-outline' : 'mdi-eye-off-outline'
+          "
           :rules="[rules.required]"
+          @click:append="togglePassword"
         ></v-text-field>
         <v-btn class="ma-2" :disabled="!isFormValid" color="secondary">
           Entrar
@@ -33,8 +36,17 @@ import rules from "@/plugins/vuetify/rules"
 export default Vue.extend({
   data: () => ({
     rules,
-    isFormValid: false
-  })
+    isFormValid: false,
+    showPassword: false
+  }),
+  methods: {
+    /**
+     * show / hide password
+     */
+    togglePassword(): void {
+      this.showPassword = !this.showPassword
+    }
+  }
 })
 </script>
 
