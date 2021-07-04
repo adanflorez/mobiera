@@ -5,6 +5,9 @@
     >
     <v-form v-model="isFormValid">
       <v-container class="d-flex flex-column justify-center">
+        <v-alert v-show="showError" border="top" color="red lighten-2" dark>
+          Error en las credenciales
+        </v-alert>
         <v-text-field
           label="Correo"
           :rules="[rules.required, rules.email]"
@@ -51,7 +54,8 @@ export default Vue.extend({
     isFormValid: false,
     showPassword: false,
     userAuth: {} as UserAuth,
-    loading: false
+    loading: false,
+    showError: false
   }),
   methods: {
     /**
@@ -71,6 +75,12 @@ export default Vue.extend({
           this.userAuth.password
         )
         this.loading = false
+        if (!data.length) {
+          this.showError = true
+          setTimeout(() => {
+            this.showError = false
+          }, 3000)
+        }
       } catch (error) {
         console.error(error)
       }
