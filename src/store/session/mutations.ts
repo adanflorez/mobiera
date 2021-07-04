@@ -1,11 +1,11 @@
 import { MutationTree } from "vuex"
 
 import { UserMutations } from "@/enums/user-mutations"
-import { UserState } from "./types"
-import { UserAuth } from "@/interfaces/user-auth"
+import { SessionState } from "./types"
+import { User } from "@/interfaces/user"
 
-export const mutations: MutationTree<UserState> = {
-  [UserMutations.UPDATE_USER_INFO](state, user: UserAuth) {
+export const mutations: MutationTree<SessionState> = {
+  [UserMutations.UPDATE_USER_INFO](state, user: User) {
     state.user = Object.assign({}, user)
   },
   [UserMutations.SET_ACCESS_TOKEN](state, accessToken: string) {

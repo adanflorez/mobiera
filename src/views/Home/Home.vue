@@ -1,11 +1,17 @@
 <template>
-  <div>Home</div>
+  <div>{{ user }}</div>
 </template>
 
 <script lang="ts">
+import { User } from "@/interfaces/user"
 import Vue from "vue"
 
 export default Vue.extend({
-  name: "Home"
+  name: "Home",
+  computed: {
+    user(): User {
+      return this.$store.state.user.user
+    }
+  }
 })
 </script>

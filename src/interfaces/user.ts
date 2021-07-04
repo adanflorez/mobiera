@@ -1,4 +1,4 @@
-export interface UserAuth {
+export interface User {
   name: string
   lastName: string
   photoUrl: string

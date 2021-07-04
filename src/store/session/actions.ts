@@ -1,12 +1,12 @@
 import services from "@/http/services"
 import { ActionTree } from "vuex"
 import { RootState } from ".."
-import { UserState } from "@/store/user/types"
+import { SessionState } from "@/store/session/types"
 
 import { UserMutations } from "@/enums/user-mutations"
 import router from "@/router"
 
-export const actions: ActionTree<UserState, RootState> = {
+export const actions: ActionTree<SessionState, RootState> = {
   /**
    * Returns Promise
    *

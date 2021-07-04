@@ -13,7 +13,7 @@
           :rules="[rules.required, rules.email]"
           filled
           append-icon="mdi-email"
-          v-model="userAuth.email"
+          v-model="user.email"
         ></v-text-field>
         <v-text-field
           label="Contraseña"
@@ -24,7 +24,7 @@
           "
           :rules="[rules.required]"
           @click:append="togglePassword"
-          v-model="userAuth.password"
+          v-model="user.password"
         ></v-text-field>
         <v-btn
           class="ma-2"
@@ -44,14 +44,14 @@
 import Vue from "vue"
 import rules from "@/plugins/vuetify/rules"
 // interfaces
-import { UserAuth } from "@/interfaces/user-auth"
+import { User } from "@/interfaces/user"
 
 export default Vue.extend({
   data: () => ({
     rules,
     isFormValid: false,
     showPassword: false,
-    userAuth: {} as UserAuth,
+    user: {} as User,
     loading: false,
     showError: false
   }),
@@ -69,8 +69,8 @@ export default Vue.extend({
       this.loading = true
       try {
         const payload = {
-          email: this.userAuth.email,
-          password: this.userAuth.password
+          email: this.user.email,
+          password: this.user.password
         }
         this.$store
           .dispatch("login", payload)

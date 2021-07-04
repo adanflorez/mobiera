@@ -1,8 +1,8 @@
 import { GetterTree } from "vuex"
 import { RootState } from ".."
-import { UserState } from "./types"
+import { SessionState } from "./types"
 
-export const getters: GetterTree<UserState, RootState> = {
+export const getters: GetterTree<SessionState, RootState> = {
   isLoggedIn: (state) => {
     return state.accessToken ? true : false
   }
