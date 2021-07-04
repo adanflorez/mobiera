@@ -13,7 +13,7 @@
           <v-list-item>
             <v-list-item-title>Perfíl</v-list-item-title>
           </v-list-item>
-          <v-list-item @click="logout">
+          <v-list-item @click="logoutUser">
             <v-list-item-title>Cerrar sesión</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -25,16 +25,17 @@
 
 <script lang="ts">
 import Vue from "vue"
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 
 export default Vue.extend({
   computed: {
     ...mapGetters(["userName"])
   },
   methods: {
-    logout() {
-      console.log("cerrando...")
-    }
+    logoutUser(): void {
+      this.logout()
+    },
+    ...mapActions(["logout"])
   }
 })
 </script>
