@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "user": "adan@mobiera.com",
+      "password": "123456",
+      "name": "Adan",
+      "lastName": "Florez",
+      "photoUrl": "https://scontent.fbog4-2.fna.fbcdn.net/v/t1.6435-9/121290811_3897255820293223_1862905787133801958_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=DzDMaUO8xo4AX8uGvw4&tn=Gi87Rkgl2Ml-lwLg&_nc_ht=scontent.fbog4-2.fna&oh=ff4170fa8afd8bc81a10c96debadb438&oe=60E5861A"
+    },
+    { "user": "alaiah@mobiera.com", "password": "654321" }
+  ]
+}
