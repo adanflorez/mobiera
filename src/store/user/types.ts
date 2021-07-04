@@ -1,5 +1,6 @@
+import { UserAuth } from "@/interfaces/user-auth"
+
 export interface UserState {
-  name: string
-  lastName: string
-  photoUrl: string
+  user: UserAuth
+  accessToken: string
 }
