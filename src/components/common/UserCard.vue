@@ -1,9 +1,9 @@
 <template>
   <v-card light class="mx-auto" elevation="20">
     <div class="d-flex flex-column flex-sm-row">
-      <div class="my-n2 img-wrapper">
+      <div class="img-wrapper">
         <v-img :lazy-src="user.photoUrl" :src="user.photoUrl"></v-img>
-        <div class="mx-auto btn-actions">
+        <div class="mx-auto btn-actions pa-2">
           <div class="d-flex justify-center">
             <v-btn rounded color="primary" dark>
               <v-icon left dark> mdi-account-edit-outline </v-icon> Editar
@@ -98,9 +98,10 @@ export default Vue.extend({
 
   .btn-actions {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     right: 0;
     left: 0;
+    background-color: rgba($color: #757575, $alpha: 0.5);
   }
 }
 </style>
