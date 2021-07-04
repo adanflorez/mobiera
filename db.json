@@ -1,0 +1,6 @@
+{
+  "users": [
+    { "user": "adan@mobiera.com", "password": "123456" },
+    { "user": "alaiah@mobiera.com", "password": "654321" }
+  ]
+}
