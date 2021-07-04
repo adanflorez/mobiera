@@ -42,6 +42,8 @@ import Vue from "vue"
 import rules from "@/plugins/vuetify/rules"
 // interfaces
 import { UserAuth } from "@/interfaces/user-auth"
+// http
+import services from "@/http/services"
 
 export default Vue.extend({
   data: () => ({
@@ -61,11 +63,17 @@ export default Vue.extend({
     /**
      * user login
      */
-    login(): void {
+    async login() {
       this.loading = true
-      setTimeout(() => {
+      try {
+        const { data } = await services.login(
+          this.userAuth.email,
+          this.userAuth.password
+        )
         this.loading = false
-      }, 3000)
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 })
