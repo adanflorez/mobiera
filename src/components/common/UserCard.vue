@@ -1,12 +1,8 @@
 <template>
   <v-card light class="mx-auto" elevation="20">
     <div class="d-flex flex-column flex-sm-row">
-      <div>
-        <v-img
-          class="my-n2"
-          :lazy-src="user.photoUrl"
-          :src="user.photoUrl"
-        ></v-img>
+      <div class="my-n2">
+        <v-img :lazy-src="user.photoUrl" :src="user.photoUrl"></v-img>
       </div>
 
       <div class="d-flex flex-column justify-space-between">
@@ -14,9 +10,9 @@
           <v-card-title>{{ userName }}</v-card-title>
           <v-card-text class="blue-grey--text">
             <div class="font-weight-light text-caption">
-              {{ user.description }}
+              {{ user.description | truncate(truncateLength) }}
               <br />
-              <a href="#!">Leer más</a>
+              <a @click="readMore" href="#!">{{ showMoreText }}</a>
             </div>
           </v-card-text>
         </div>
@@ -43,6 +39,8 @@
 import { User } from "@/interfaces/user"
 import Vue, { PropOptions } from "vue"
 
+import { USER_DESCRIPTION_TRUNCATE } from "@/constants/global"
+
 export default Vue.extend({
   props: {
     user: {
@@ -52,6 +50,26 @@ export default Vue.extend({
   computed: {
     userName(): string {
       return `${this.user.name} ${this.user.lastName}`
+    },
+    truncateLength(): number {
+      return this.showMore
+        ? this.user.description.length
+        : USER_DESCRIPTION_TRUNCATE
+    }
+  },
+  data: () => ({
+    showMore: false,
+    showMoreText: "Leer más"
+  }),
+  methods: {
+    /**
+     * show / hide user info
+     */
+    readMore() {
+      this.showMore = !this.showMore
+      this.showMore
+        ? (this.showMoreText = "Leer menos")
+        : (this.showMoreText = "Leer más")
     }
   }
 })
