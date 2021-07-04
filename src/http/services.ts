@@ -6,6 +6,7 @@ interface Response {
 
 const services = {
   /**
+   * Returns the response from the endpoint to log in
    *
    * @param email - user email
    * @param password - user password

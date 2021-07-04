@@ -7,6 +7,7 @@ import { UserMutations } from "@/enums/user-mutations"
 
 export const actions: ActionTree<UserState, RootState> = {
   /**
+   * Returns Promise
    *
    * @param payload - email and password values
    */
