@@ -30,5 +30,10 @@ export const actions: ActionTree<SessionState, RootState> = {
           reject(error)
         })
     })
+  },
+  logout({ commit }) {
+    commit(UserMutations.UPDATE_USER_INFO, null)
+    commit(UserMutations.SET_ACCESS_TOKEN, null)
+    router.push("/")
   }
 }

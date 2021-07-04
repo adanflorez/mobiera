@@ -4,4 +4,7 @@ export interface User {
   photoUrl: string
   email: string
   password: string
+  description: string
+  followers: number
+  following: number
 }

@@ -1,0 +1,1 @@
+export const USER_DESCRIPTION_TRUNCATE = 120

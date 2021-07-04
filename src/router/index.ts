@@ -7,14 +7,26 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "Login",
-    component: Login
+    path: "",
+    component: () => import("@/layouts/full-page/Full.vue"),
+    children: [
+      {
+        path: "/",
+        name: "Login",
+        component: Login
+      }
+    ]
   },
   {
-    path: "/home",
-    name: "Home",
-    component: () => import("@/views/Home/Home.vue")
+    path: "",
+    component: () => import("@/layouts/main/Main.vue"),
+    children: [
+      {
+        path: "/home",
+        name: "Home",
+        component: () => import("@/views/Home/Home.vue")
+      }
+    ]
   }
 ]
 
