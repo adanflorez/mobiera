@@ -1,8 +1,6 @@
 <template>
-  <div>
+  <div id="main-wrapper">
     <v-app-bar color="deep-purple accent-4" dense dark>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
       <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -21,9 +19,7 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-container fill-height>
-      <router-view></router-view>
-    </v-container>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -32,3 +28,8 @@ import Vue from "vue"
 
 export default Vue.extend({})
 </script>
+<style lang="scss" scoped>
+#main-wrapper {
+  height: calc(100% - 48px);
+}
+</style>
