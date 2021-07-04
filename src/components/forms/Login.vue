@@ -45,8 +45,6 @@ import Vue from "vue"
 import rules from "@/plugins/vuetify/rules"
 // interfaces
 import { UserAuth } from "@/interfaces/user-auth"
-// http
-import services from "@/http/services"
 
 export default Vue.extend({
   data: () => ({
