@@ -10,6 +10,7 @@
           :rules="[rules.required, rules.email]"
           filled
           append-icon="mdi-email"
+          v-model="userAuth.email"
         ></v-text-field>
         <v-text-field
           label="Contraseña"
@@ -20,8 +21,15 @@
           "
           :rules="[rules.required]"
           @click:append="togglePassword"
+          v-model="userAuth.password"
         ></v-text-field>
-        <v-btn class="ma-2" :disabled="!isFormValid" color="secondary">
+        <v-btn
+          class="ma-2"
+          :disabled="!isFormValid || loading"
+          :loading="loading"
+          color="secondary"
+          @click="login"
+        >
           Entrar
         </v-btn>
       </v-container>
@@ -32,12 +40,16 @@
 <script lang="ts">
 import Vue from "vue"
 import rules from "@/plugins/vuetify/rules"
+// interfaces
+import { UserAuth } from "@/interfaces/user-auth"
 
 export default Vue.extend({
   data: () => ({
     rules,
     isFormValid: false,
-    showPassword: false
+    showPassword: false,
+    userAuth: {} as UserAuth,
+    loading: false
   }),
   methods: {
     /**
@@ -45,6 +57,15 @@ export default Vue.extend({
      */
     togglePassword(): void {
       this.showPassword = !this.showPassword
+    },
+    /**
+     * user login
+     */
+    login(): void {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+      }, 3000)
     }
   }
 })
