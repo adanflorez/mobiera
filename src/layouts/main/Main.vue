@@ -32,6 +32,9 @@ export default Vue.extend({
     ...mapGetters(["userName"])
   },
   methods: {
+    /**
+     * user session ends
+     */
     logoutUser(): void {
       this.logout()
     },
