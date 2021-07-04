@@ -10,7 +10,7 @@ export default Vue.extend({
   name: "Home",
   computed: {
     user(): User {
-      return this.$store.state.user.user
+      return this.$store.state.session.user
     }
   }
 })

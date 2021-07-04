@@ -1,7 +1,7 @@
 import Vue from "vue"
 import Vuex, { StoreOptions } from "vuex"
 
-import { user } from "@/store/session"
+import { session } from "@/store/session"
 import VuexPersistence from "vuex-persist"
 
 const vuexLocal = new VuexPersistence<RootState>({
@@ -18,7 +18,7 @@ export type RootState = ReturnType<typeof state>
 const store: StoreOptions<RootState> = {
   state,
   modules: {
-    user
+    session
   },
   plugins: [vuexLocal.plugin]
 }

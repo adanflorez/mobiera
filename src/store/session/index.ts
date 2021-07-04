@@ -11,7 +11,7 @@ const state: SessionState = {
   accessToken: ""
 }
 
-export const user: Module<SessionState, RootState> = {
+export const session: Module<SessionState, RootState> = {
   state,
   actions,
   mutations,
