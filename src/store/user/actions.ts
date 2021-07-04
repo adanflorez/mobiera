@@ -12,7 +12,7 @@ export const actions: ActionTree<UserState, RootState> = {
         .login(payload.email, payload.password)
         .then((response) => {
           if (response.data && response.data.length) {
-            commit(UserMutations.UPDATE_USER_INFO, response.data)
+            commit(UserMutations.UPDATE_USER_INFO, response.data[0])
             resolve(response)
           } else {
             reject({ message: "Error en las credenciales!!!" })
