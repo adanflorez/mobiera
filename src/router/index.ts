@@ -1,6 +1,7 @@
 import Vue from "vue"
 import VueRouter, { RouteConfig } from "vue-router"
 import Login from "@/views/Login/Login.vue"
+import store from "@/store"
 
 Vue.use(VueRouter)
 
@@ -24,12 +25,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const mobiera = localStorage.getItem("mobiera")
-  let isAuthenticated = false
-  if (mobiera) {
-    const mobieraParsed = JSON.parse(mobiera)
-    isAuthenticated = mobieraParsed.user.accessToken ? true : false
-  }
+  const isAuthenticated = store.getters["isLoggedIn"]
   if (to.name !== "Login" && !isAuthenticated)
     next({ name: "Login", query: { to: to.path } })
   else next()

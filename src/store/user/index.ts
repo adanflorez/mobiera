@@ -3,6 +3,7 @@ import { RootState } from ".."
 import { UserState } from "@/store/user/types"
 import { actions } from "@/store/user/actions"
 import { mutations } from "@/store/user/mutations"
+import { getters } from "@/store/user/getters"
 import { UserAuth } from "@/interfaces/user-auth"
 
 const state: UserState = {
@@ -13,5 +14,6 @@ const state: UserState = {
 export const user: Module<UserState, RootState> = {
   state,
   actions,
-  mutations
+  mutations,
+  getters
 }
