@@ -70,17 +70,22 @@ export default Vue.extend({
     async login() {
       this.loading = true
       try {
-        const { data } = await services.login(
-          this.userAuth.email,
-          this.userAuth.password
-        )
-        this.loading = false
-        if (!data.length) {
-          this.showError = true
-          setTimeout(() => {
-            this.showError = false
-          }, 3000)
+        const payload = {
+          email: this.userAuth.email,
+          password: this.userAuth.password
         }
+        this.$store
+          .dispatch("login", payload)
+          .then(() => {
+            this.loading = false
+          })
+          .catch(() => {
+            this.loading = false
+            this.showError = true
+            setTimeout(() => {
+              this.showError = false
+            }, 3000)
+          })
       } catch (error) {
         console.error(error)
       }
