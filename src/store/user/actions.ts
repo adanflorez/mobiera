@@ -6,6 +6,10 @@ import { UserState } from "@/store/user/types"
 import { UserMutations } from "@/enums/user-mutations"
 
 export const actions: ActionTree<UserState, RootState> = {
+  /**
+   *
+   * @param payload - email and password values
+   */
   login({ commit }, payload): Promise<unknown> {
     return new Promise((resolve, reject) => {
       services
