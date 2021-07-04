@@ -28,7 +28,9 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters["isLoggedIn"]
   if (to.name !== "Login" && !isAuthenticated)
     next({ name: "Login", query: { to: to.path } })
-  else next()
+  else if (to.name === "Login" && isAuthenticated) {
+    next({ name: "Home" })
+  } else next()
 })
 
 export default router
