@@ -47,6 +47,7 @@ import { User } from "@/interfaces/user"
 import Vue, { PropOptions } from "vue"
 
 import { USER_DESCRIPTION_TRUNCATE } from "@/constants/global"
+import { mapGetters } from "vuex"
 
 export default Vue.extend({
   props: {
@@ -55,14 +56,12 @@ export default Vue.extend({
     } as PropOptions<User>
   },
   computed: {
-    userName(): string {
-      return `${this.user.name} ${this.user.lastName}`
-    },
     truncateLength(): number {
       return this.showMore
         ? this.user.description.length
         : USER_DESCRIPTION_TRUNCATE
-    }
+    },
+    ...mapGetters(["userName"])
   },
   data: () => ({
     showMore: false,
