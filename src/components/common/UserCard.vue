@@ -1,8 +1,15 @@
 <template>
   <v-card light class="mx-auto" elevation="20">
     <div class="d-flex flex-column flex-sm-row">
-      <div class="my-n2">
+      <div class="my-n2 img-wrapper">
         <v-img :lazy-src="user.photoUrl" :src="user.photoUrl"></v-img>
+        <div class="mx-auto btn-actions">
+          <div class="d-flex justify-center">
+            <v-btn rounded color="primary" dark>
+              <v-icon left dark> mdi-account-edit-outline </v-icon> Editar
+            </v-btn>
+          </div>
+        </div>
       </div>
 
       <div class="d-flex flex-column justify-space-between">
@@ -12,14 +19,14 @@
             <div class="font-weight-light text-caption">
               {{ user.description | truncate(truncateLength) }}
               <br />
-              <a @click="readMore" href="#!">{{ showMoreText }}</a>
+              <a @click="readMore" href="#!">{{ showMoreText }} </a>
             </div>
           </v-card-text>
         </div>
 
         <v-card-text>
           <v-divider class="mb-4" light></v-divider>
-          <div class="d-flex text-uppercase">
+          <div class="d-flex justify-center text-center text-uppercase">
             <div class="mr-10 blue-grey--text">
               seguidores <br />
               <h3 class="black--text">{{ user.followers }}</h3>
@@ -76,13 +83,24 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.v-image {
-  width: 100%;
-  height: 250px;
+.img-wrapper {
+  position: relative;
 
-  @media (min-width: 600px) {
-    width: 250px;
-    height: 400px;
+  .v-image {
+    width: 100%;
+    height: 250px;
+
+    @media (min-width: 600px) {
+      width: 250px;
+      height: 400px;
+    }
+  }
+
+  .btn-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
   }
 }
 </style>
