@@ -18,6 +18,7 @@ export const actions: ActionTree<UserState, RootState> = {
         .then((response) => {
           if (response.data && response.data.length) {
             commit(UserMutations.UPDATE_USER_INFO, response.data[0])
+            commit(UserMutations.SET_ACCESS_TOKEN, "here access token")
             resolve(response)
           } else {
             reject({ message: "Error en las credenciales!!!" })
