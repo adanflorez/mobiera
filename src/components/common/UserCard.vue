@@ -19,7 +19,7 @@
             <div class="font-weight-light text-caption">
               {{ user.description | truncate(truncateLength) }}
               <br />
-              <a @click="readMore" href="#!">{{ showMoreText }} </a>
+              <a @click="readMore">{{ showMoreText }} </a>
             </div>
           </v-card-text>
         </div>

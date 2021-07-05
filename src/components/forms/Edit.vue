@@ -42,9 +42,13 @@
             <v-text-field
               label="Contraseña"
               filled
+              :type="showPassword ? 'text' : 'password'"
+              :append-icon="
+                showPassword ? 'mdi-eye-outline' : 'mdi-eye-off-outline'
+              "
+              @click:append="togglePassword"
               :rules="[rules.required, rules.password]"
               v-model="user.password"
-              append-icon="mdi-lock"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -89,7 +93,8 @@ export default Vue.extend({
     loading: false,
     showAlert: false,
     alertType: "",
-    alertMessage: ""
+    alertMessage: "",
+    showPassword: false
   }),
   computed: {
     user(): User {
@@ -98,6 +103,9 @@ export default Vue.extend({
     }
   },
   methods: {
+    /**
+     * Save updated user info
+     */
     save() {
       this.loading = true
       try {
@@ -114,6 +122,12 @@ export default Vue.extend({
         this.showAlert = true
         this.alertMessage = "Error al actualizar la información"
       }
+    },
+    /**
+     * show / hide password
+     */
+    togglePassword(): void {
+      this.showPassword = !this.showPassword
     },
     ...mapMutations([UserMutations.UPDATE_USER_INFO])
   }

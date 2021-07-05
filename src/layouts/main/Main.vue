@@ -67,6 +67,6 @@ export default Vue.extend({
 </script>
 <style lang="scss" scoped>
 #main-wrapper {
-  height: calc(100% - 48px);
+  height: calc(100% - 64px);
 }
 </style>
