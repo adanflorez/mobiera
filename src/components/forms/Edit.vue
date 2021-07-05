@@ -35,7 +35,7 @@
               :rules="[rules.required, rules.email]"
               filled
               append-icon="mdi-email"
-              v-model="user.email"
+              v-model="user.user"
             ></v-text-field
           ></v-col>
           <v-col class="py-2">
@@ -54,8 +54,9 @@
               filled
               name="input-7-4"
               label="Descripción"
-              rows="2"
-              row-height="20"
+              rows="3"
+              row-height="30"
+              v-model="user.description"
             ></v-textarea>
           </v-col>
         </v-row>
@@ -78,19 +79,31 @@ import Vue from "vue"
 import rules from "@/plugins/vuetify/rules"
 // interfaces
 import { User } from "@/interfaces/user"
+import { mapMutations } from "vuex"
+import { UserMutations } from "@/enums/user-mutations"
 
 export default Vue.extend({
   data: () => ({
     rules,
     isFormValid: false,
-    user: {} as User,
     loading: false,
     showError: false
   }),
+  computed: {
+    user(): User {
+      const userToEdit = Object.assign({}, this.$store.state.session.user)
+      return userToEdit
+    }
+  },
   methods: {
     save() {
-      console.log("guardando")
-    }
+      this.loading = true
+      setTimeout(() => {
+        this[UserMutations.UPDATE_USER_INFO](this.user)
+        this.loading = false
+      }, 3000)
+    },
+    ...mapMutations([UserMutations.UPDATE_USER_INFO])
   }
 })
 </script>
