@@ -5,7 +5,7 @@
         <v-img :lazy-src="user.photoUrl" :src="user.photoUrl"></v-img>
         <div class="mx-auto btn-actions pa-2">
           <div class="d-flex justify-center">
-            <v-btn rounded color="primary" dark>
+            <v-btn rounded color="primary" dark @click="goToEdit">
               <v-icon left dark> mdi-account-edit-outline </v-icon> Editar
             </v-btn>
           </div>
@@ -76,6 +76,12 @@ export default Vue.extend({
       this.showMore
         ? (this.showMoreText = "Leer menos")
         : (this.showMoreText = "Leer más")
+    },
+    /**
+     * redirect to edit profile
+     */
+    goToEdit(): void {
+      this.$router.push("/edit")
     }
   }
 })
