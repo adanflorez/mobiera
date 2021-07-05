@@ -14,7 +14,7 @@ export default {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/
     return (
       pattern.test(value) ||
-      "8 caracteres que incluyan al menos una mayuscula, una minuscula y un caracter especial"
+      "8 caracteres que incluyan al menos una mayuscula, una minuscula, un número y un caracter especial !@#$%^&*"
     )
   }
 }
