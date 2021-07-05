@@ -5,8 +5,17 @@
     >
     <v-form v-model="isFormValid">
       <v-container class="d-flex flex-column justify-center">
-        <v-alert v-show="showAlert" dense text :type="alertType" dismissible>
-          {{ alertMessage }}
+        <v-alert
+          v-show="showAlertSuccess"
+          dense
+          text
+          type="success"
+          dismissible
+        >
+          Información actualizada
+        </v-alert>
+        <v-alert v-show="showAlertError" dense text type="error" dismissible>
+          Error al actualizar la información
         </v-alert>
         <v-row>
           <v-col class="py-0"
@@ -91,9 +100,8 @@ export default Vue.extend({
     rules,
     isFormValid: false,
     loading: false,
-    showAlert: false,
-    alertType: "",
-    alertMessage: "",
+    showAlertSuccess: false,
+    showAlertError: false,
     showPassword: false
   }),
   computed: {
@@ -112,15 +120,11 @@ export default Vue.extend({
         setTimeout(() => {
           this[UserMutations.UPDATE_USER_INFO](this.user)
           this.loading = false
-          this.alertType = "success"
-          this.showAlert = true
-          this.alertMessage = "Información actualizada"
+          this.showAlertSuccess = true
         }, 3000)
       } catch (error) {
         this.loading = false
-        this.alertType = "error"
-        this.showAlert = true
-        this.alertMessage = "Error al actualizar la información"
+        this.showAlertError = true
       }
     },
     /**
