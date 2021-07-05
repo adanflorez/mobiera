@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "user": "demo@mobiera.com",
+      "password": "Demo123@",
+      "name": "Adan",
+      "lastName": "Florez",
+      "photoUrl": "https://scontent.fbog4-2.fna.fbcdn.net/v/t1.6435-9/121290811_3897255820293223_1862905787133801958_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=DzDMaUO8xo4AX8uGvw4&tn=Gi87Rkgl2Ml-lwLg&_nc_ht=scontent.fbog4-2.fna&oh=ff4170fa8afd8bc81a10c96debadb438&oe=60E5861A",
+      "description": "Analista y diseñador de sistema de computación, con 5 años de experiencia enfocado en el desarrollo de aplicaciones web, móviles y de escritorio, en constante aprendizaje para lograr procesos más eficientes y mejores soluciones ayudando a las empresas a generar mayores utilidades.",
+      "followers": 355,
+      "following": 300
+    },
+    {
+      "user": "john@mobiera.com",
+      "password": "jC@54321",
+      "name": "John",
+      "lastName": "Cena",
+      "photoUrl": "https://ca-times.brightspotcdn.com/dims4/default/de522b9/2147483647/strip/true/crop/5080x3388+0+0/resize/840x560!/quality/90/?url=https%3A%2F%2Fapinews.efeservicios.com%2Ffiles%2Fget%2FCfDJ8EY7bN1RQ31FtZk1KFk4cDG6IeS5306vMXcNKKn5H9ByUEnBcuz9bWSyD0Rqg0JtxoRFZA_7Q1-BpoXjwJP1pG09Xc8WPykEI5Qn5bvRVadjwI4LF5R2pSln_P86_llevj-sPPAvVX5Fh8DPcrRqAVCr0QZj5FqgVpNWfES69viMr4OnPAKpocubOny05n1pPSiZRrY9w0hFqjXRpI1DxnTh7g9zAi5y6ib8m6qe-XsU",
+      "description": "John Felix Anthony Cena, Jr. es un exculturista, actor, rapero y luchador profesional estadounidense que trabaja para la WWE desde 2002. Durante su trayectoria en WWE, Cena ha ganado un total de 25 campeonatos, con 16 reinados como campeón mundial.​​",
+      "followers": 355,
+      "following": 300
+    }
+  ]
+}

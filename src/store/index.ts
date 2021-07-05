@@ -1,11 +1,26 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from "vue"
+import Vuex, { StoreOptions } from "vuex"
 
-Vue.use(Vuex);
+import { session } from "@/store/session"
+import VuexPersistence from "vuex-persist"
 
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+const vuexLocal = new VuexPersistence<RootState>({
+  storage: window.localStorage,
+  key: "mobiera"
+})
+
+Vue.use(Vuex)
+
+const state = () => ({})
+
+export type RootState = ReturnType<typeof state>
+
+const store: StoreOptions<RootState> = {
+  state,
+  modules: {
+    session
+  },
+  plugins: [vuexLocal.plugin]
+}
+
+export default new Vuex.Store<RootState>(store)
