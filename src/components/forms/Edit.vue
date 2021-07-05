@@ -5,11 +5,11 @@
     >
     <v-form v-model="isFormValid">
       <v-container class="d-flex flex-column justify-center">
-        <v-alert v-show="showError" border="top" color="red lighten-2" dark>
-          Error al actualizar los datos
+        <v-alert v-show="showAlert" dense text :type="alertType" dismissible>
+          {{ alertMessage }}
         </v-alert>
         <v-row>
-          <v-col class="py-2"
+          <v-col class="py-0"
             ><v-text-field
               label="Nombre"
               :rules="[rules.required, rules.alpha]"
@@ -18,7 +18,7 @@
               v-model="user.name"
             ></v-text-field
           ></v-col>
-          <v-col class="py-2">
+          <v-col class="py-0">
             <v-text-field
               label="Apellido"
               filled
@@ -29,7 +29,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col class="py-2"
+          <v-col class="py-0"
             ><v-text-field
               label="Correo"
               :rules="[rules.required, rules.email]"
@@ -38,7 +38,7 @@
               v-model="user.user"
             ></v-text-field
           ></v-col>
-          <v-col class="py-2">
+          <v-col class="py-0">
             <v-text-field
               label="Contraseña"
               filled
@@ -87,7 +87,9 @@ export default Vue.extend({
     rules,
     isFormValid: false,
     loading: false,
-    showError: false
+    showAlert: false,
+    alertType: "",
+    alertMessage: ""
   }),
   computed: {
     user(): User {
@@ -98,10 +100,20 @@ export default Vue.extend({
   methods: {
     save() {
       this.loading = true
-      setTimeout(() => {
-        this[UserMutations.UPDATE_USER_INFO](this.user)
+      try {
+        setTimeout(() => {
+          this[UserMutations.UPDATE_USER_INFO](this.user)
+          this.loading = false
+          this.alertType = "success"
+          this.showAlert = true
+          this.alertMessage = "Información actualizada"
+        }, 3000)
+      } catch (error) {
         this.loading = false
-      }, 3000)
+        this.alertType = "error"
+        this.showAlert = true
+        this.alertMessage = "Error al actualizar la información"
+      }
     },
     ...mapMutations([UserMutations.UPDATE_USER_INFO])
   }
