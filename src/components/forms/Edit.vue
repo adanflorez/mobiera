@@ -12,7 +12,7 @@
           <v-col class="py-2"
             ><v-text-field
               label="Nombre"
-              :rules="[rules.required]"
+              :rules="[rules.required, rules.alpha]"
               filled
               append-icon="mdi-account"
               v-model="user.name"
@@ -22,7 +22,7 @@
             <v-text-field
               label="Apellido"
               filled
-              :rules="[rules.required]"
+              :rules="[rules.required, rules.alpha]"
               append-icon="mdi-account"
               v-model="user.lastName"
             ></v-text-field>
@@ -42,7 +42,7 @@
             <v-text-field
               label="Contraseña"
               filled
-              :rules="[rules.required]"
+              :rules="[rules.required, rules.password]"
               v-model="user.password"
               append-icon="mdi-lock"
             ></v-text-field>
