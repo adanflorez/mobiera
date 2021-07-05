@@ -23,8 +23,13 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: "/home",
-        name: "Home",
+        name: "Inicio",
         component: () => import("@/views/Home/Home.vue")
+      },
+      {
+        path: "/edit",
+        name: "Editar",
+        component: () => import("@/views/Edit/Edit.vue")
       }
     ]
   }
@@ -41,7 +46,7 @@ router.beforeEach((to, from, next) => {
   if (to.name !== "Login" && !isAuthenticated)
     next({ name: "Login", query: { to: to.path } })
   else if (to.name === "Login" && isAuthenticated) {
-    next({ name: "Home" })
+    next({ name: "Inicio" })
   } else next()
 })
 
